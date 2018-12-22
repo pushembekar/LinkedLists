@@ -99,4 +99,47 @@ class SingleLinkedListTest {
         assertEquals(1000, linkedlist.getStart().getLink().getInfo());
         assertEquals(200, linkedlist.getStart().getLink().getLink().getLink().getLink().getLink().getInfo());
     }
+
+    @org.junit.jupiter.api.Test
+    void findNodeInNonEmptyList() {
+        // arrange
+        var linkedlist = new SingleLinkedList();
+        // act
+        linkedlist.insertAtBeginning(5); // 4
+        linkedlist.insertAtBeginning(10); // 3
+        linkedlist.insertAtBeginning(15); // 2
+        linkedlist.insertAtBeginning(20); // 1
+        linkedlist.insertAtBeginning(25); // 0
+
+
+        // act
+        var p = linkedlist.findNode(10);
+        var q = linkedlist.findNode(2000);
+
+        // asssert
+        assertNotNull(p);
+        assertEquals(5, p.getLink().getInfo());
+        assertNull(q);
+    }
+
+    @org.junit.jupiter.api.Test
+    void findIndexInNonEmptyList() {
+        // arrange
+        var linkedlist = new SingleLinkedList();
+        // act
+        linkedlist.insertAtBeginning(5); // 4
+        linkedlist.insertAtBeginning(10); // 3
+        linkedlist.insertAtBeginning(15); // 2
+        linkedlist.insertAtBeginning(20); // 1
+        linkedlist.insertAtBeginning(25); // 0
+
+
+        // act
+        var p = linkedlist.findPosition(10);
+        var q = linkedlist.findPosition(2000);
+
+        // asssert
+        assertEquals(3, p);
+        assertEquals(-1, q);
+    }
 }
